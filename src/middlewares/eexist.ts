@@ -1,10 +1,12 @@
+import {Request, Response, NextFunction} from 'express'
 import {manageErr} from './base'
 
-const eexist = (err: { code: any; message: any; statusCode: any; }, req: any, res: any, next: (arg0: any) => void) => {
+
+const eexist = (err: { code: any; message: any; statusCode: any; }, req: Request, res: Response, next: NextFunction) => {
   manageErr(err, {
     code: 'EEXIST',
     message: 'Directory already exists',
-    statusCode: 400,
+    statusCode: 409,
   });
   next(err);
 };

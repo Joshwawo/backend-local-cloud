@@ -1,4 +1,4 @@
-const manageErr = (err: { code: any; message: any; statusCode: any; }, settings: { code: any; message: any; statusCode: any; }) => {
+const manageErr = (err: { code: number; message: string; statusCode: number; }, settings: { code: any; message: string; statusCode: any; }) => {
   if (err.code !== settings.code) {
     return false;
   }

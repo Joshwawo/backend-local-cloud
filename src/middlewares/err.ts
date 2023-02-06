@@ -1,6 +1,7 @@
-const err = (err: { statusCode: any; message: any; }, req: any, res:any, next: any) => {
-  console.log(err);
-  res.status(err.statusCode || 500).json({
+import {Request, Response, NextFunction} from 'express'
+
+const err = (err: { statusCode: number; message: string, cause:number }, req: Request, res:Response, next: NextFunction) => {
+  res.status(err.statusCode || err.cause || 500).json({
     message: err.message,
     success: false
   });

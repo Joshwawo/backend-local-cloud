@@ -1,6 +1,6 @@
 import { Router } from "express";
 import fileUpload from 'express-fileupload'
-import { HolaController,contentCtrl,uploadFilesCtrl,dirCtrl } from "../controllers/holaCtrl";
+import { HolaController,contentCtrl,uploadFilesCtrl,dirCtrl } from "../controllers/apiCtrl";
 
 const router = Router()
 router.use(fileUpload())

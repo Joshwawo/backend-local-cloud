@@ -1,10 +1,11 @@
+import {Request, Response, NextFunction} from 'express'
 import {manageErr} from './base'
 
-const enoent = (err: { code: any; message: any; statusCode: any; }, req: any, res: any, next: (arg0: any) => void) => {
+const enoent = (err: { code: any; message: string; statusCode: number; }, _req: Request, _res: Response, next: NextFunction) => {
   manageErr(err, {
     code: 'ENOENT',
     message: 'File or directory does not exist',
-    statusCode: 400,
+    statusCode: 404,
   });
   next(err);
 };
