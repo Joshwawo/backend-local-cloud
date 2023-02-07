@@ -2,6 +2,7 @@ import express, {Application, Request, Response} from "express";
 import cors from "cors";
 import morgan from "morgan";
 import 'dotenv/config'
+import compression from 'compression'
 import enoent from './middlewares/enoent'
 import eexist from './middlewares/eexist'
 import err from './middlewares/err'
@@ -17,7 +18,7 @@ if (!storeEnv) {
   );
   process.exit(1);
 }
-
+app.use(compression())
 app.use(express.json())
 app.use(cors())
 app.use(morgan('dev'))

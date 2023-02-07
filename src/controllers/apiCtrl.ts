@@ -52,7 +52,7 @@ export const uploadFilesCtrl = async (req: Request, res: Response, next:NextFunc
 export const downloadFilesCtrl = async (req: Request, res: Response, next:NextFunction) => {
   try {
     const file = processPath(req.params.path).absolutePath;
-    // const mimetype = mineType.lookup(file);
+    const mimetype = mineType.lookup(file);
     res.setHeader('Content-Disposition', `attachment; filename=${file}`);
     res.setHeader('Content-Type', mineType as any);
     res.download(file);
@@ -65,7 +65,7 @@ export const downloadFilesCtrl = async (req: Request, res: Response, next:NextFu
 export const imgCtrl = async (req: Request, res: Response, next:NextFunction) => {
   try {
     const file = processPath(req.params.path).absolutePath;
-    res.setHeader('Content-Type', mineType as any);
+    // res.setHeader('Content-Type', mineType as any);
     res.sendFile(file,(err) => {
       if (err) {
         next(err);
