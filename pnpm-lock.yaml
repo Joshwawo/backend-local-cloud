@@ -13,6 +13,7 @@ specifiers:
   esbuild-node-tsc: ^2.0.5
   express: ^4.18.2
   express-fileupload: ^1.4.0
+  file-saver: ^2.0.5
   mime-types: ^2.1.35
   morgan: ^1.10.0
   nodemon: ^2.0.20
@@ -22,6 +23,7 @@ dependencies:
   cors: 2.8.5
   express: 4.18.2
   express-fileupload: 1.4.0
+  file-saver: 2.0.5
   mime-types: 2.1.35
   morgan: 1.10.0
 
@@ -644,6 +646,10 @@ packages:
       vary: 1.1.2
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /file-saver/2.0.5:
+    resolution: {integrity: sha512-P9bmyZ3h/PRG+Nzga+rbdI4OEpNDzAVyy74uVO9ATgzLK6VtAsYybF/+TOCvrc0MO793d6+42lLyZTw7/ArVzA==}
     dev: false
 
   /fill-range/7.0.1:

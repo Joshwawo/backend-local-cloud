@@ -4,7 +4,10 @@ import path from 'node:path'
 import moveFile from '../lib/moveFile';
 
 export const contentServ = async (path: string) => {
-  const dirPath = processPath(path);
+  let regex = path?.replace(/undefined/g, "");
+  const dirPath = processPath(regex)
+  
+  
   const dir = await fs.promises.opendir(dirPath.absolutePath);
   const content = { files: [], directories: [] };
 

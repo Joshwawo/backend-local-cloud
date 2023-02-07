@@ -6,7 +6,6 @@ import enoent from './middlewares/enoent'
 import eexist from './middlewares/eexist'
 import err from './middlewares/err'
 import {router} from "./routes"
-
 const app:Application = express()
 const PORT = process.env.PORT || 3000
 
@@ -18,6 +17,10 @@ if (!storeEnv) {
   );
   process.exit(1);
 }
+
+
+
+
 app.use(express.json())
 app.use(cors())
 app.use(morgan('dev'))

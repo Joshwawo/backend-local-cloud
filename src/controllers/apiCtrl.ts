@@ -10,6 +10,7 @@ export const HolaController = (_:Request, res:Response)=>{
 
 export const contentCtrl = async (req: Request, res: Response, next:NextFunction) => {
   try {
+    
     const response = await contentServ(req.params.path)
     res.json(response);
   }
@@ -50,6 +51,7 @@ export const uploadFilesCtrl = async (req: Request, res: Response, next:NextFunc
 
 export const downloadFilesCtrl = async (req: Request, res: Response, next:NextFunction) => {
   try {
+    console.log('downloadFilesCtrl')
     const file = processPath(req.params.path).absolutePath;
     const mimetype = mineType.lookup(file);
     console.log(mimetype);
