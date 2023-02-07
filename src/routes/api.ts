@@ -1,6 +1,6 @@
 import { Router } from "express";
 import fileUpload from 'express-fileupload'
-import { HolaController,contentCtrl,uploadFilesCtrl,dirCtrl ,downloadFilesCtrl} from "../controllers/apiCtrl";
+import { HolaController,contentCtrl,uploadFilesCtrl,dirCtrl ,downloadFilesCtrl,imgCtrl} from "../controllers/apiCtrl";
 
 const router = Router()
 router.use(fileUpload())
@@ -9,5 +9,6 @@ router.get('/content/:path?', contentCtrl)
 router.post('/dir/:path?', dirCtrl)
 router.post('/upload/:path?', uploadFilesCtrl)
 router.get('/download/:path?', downloadFilesCtrl)
+router.get('/img/:path?', imgCtrl)
 
 export{router}

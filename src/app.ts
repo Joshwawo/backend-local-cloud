@@ -18,22 +18,16 @@ if (!storeEnv) {
   process.exit(1);
 }
 
-
-
-
 app.use(express.json())
 app.use(cors())
 app.use(morgan('dev'))
 app.use(router)
-
-app.get('*', (_:Request,res:Response)=>{
-  res.json({message: 'this route does exist', statusCode: 400})
-})
-
 app.use(enoent)
 app.use(eexist)
 app.use(err)
-
+app.get('*', (_:Request,res:Response)=>{
+  res.json({message: 'this route does exist', statusCode: 400})
+})
 
 app.listen(PORT, ()=>{
   console.log(`server running on http://localhost:${PORT}`)
