@@ -37,7 +37,7 @@ Open .env-example and copy its content into a new file named .env, then set t
 #### Get Directory
 
 ```http
-  GET /api/content/path?
+GET /api/content/path?
 ```
 
 
@@ -56,7 +56,7 @@ In a URL, the slash "/" is used to separate the different sections of a web addr
 #### Create folder
 
 ```http
-  POST /api/dir/path?
+POST /api/dir/path?
 ```
 
 | Body | Type     | Description                       |
@@ -91,7 +91,7 @@ POST /api/upload/amigos--pollos--familly
 ### Download Files
 
 ```http
-  GET /api/download/path?
+GET /api/download/path?
 ```
 
 
@@ -102,7 +102,7 @@ GET /api/download/amigos--pollos--familly--gus.png
 ### View Media files
 
 ```http
-  POST /api/img/path?
+POST /api/img/path?
 ```
 
 It is not limited to images and videos, you can also view PDFs among many multimedia files.
@@ -117,16 +117,16 @@ POST /api/img/amigos--pollos--familly--gus.png
 ### Delete Files
 
 ```http
-  DELETE /api/delete/path?
+DELETE /api/delete/path?
 ```
 #### Example
 ```http
-  DELETE /api/delete/amigos--pollos--familly--gus.png
+DELETE /api/delete/amigos--pollos--familly--gus.png
 ```
 ### Rename Files
 
 ```http
-  PUT /api/rename/path?
+PUT /api/rename/path?
 ```
 
 | Body | Type     | Description                       |
