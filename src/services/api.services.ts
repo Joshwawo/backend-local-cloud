@@ -36,6 +36,12 @@ export const dirServ = async (pathName: string, name: string) => {
 
 }
 
+export const deleteServ = async (pathName: string) => {
+  const dirPath = processPath(pathName);
+  await fs.promises.rm(dirPath.absolutePath, { recursive: true });
+  return { success: true, message: "File or directory deleted" };
+}
+
 export const uploadFilesServ = async (pathName: string, filesx: any) => {
   if (!filesx) {
     const error = new Error("No files were uploaded");
@@ -66,3 +72,14 @@ export const uploadFilesServ = async (pathName: string, filesx: any) => {
   };
 }
 
+export const changeNameFileSrv = async (pathName: string, name: string) => {
+  const dirPath = processPath(pathName);
+  if (!name) {
+    const error = new Error("No name was specified");
+    error.cause = 404;
+    return error
+  }
+  const newPath = path.join(dirPath.absolutePath, "..", `${name}.${pathName.split(".")[1]}`);
+  await fs.promises.rename(dirPath.absolutePath, newPath);
+  return { success: true, message: "File or directory renamed" };
+}

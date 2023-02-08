@@ -11,7 +11,7 @@ const AnotherFIle = ({ cleanRoute, file }: AnotherFIleProps) => {
   const url3000 = import.meta.env.VITE_BACKEND_URI;
   const mediaRegex =
     /^((?!\.(jpg|jpeg|png|gif|bmp|mp3|ogg|flac|acc|mp4|mkv|flv|mov|avi|jfif|webp|wav)$).)*$/;
-  console.log(mediaRegex.test(cleanRoute));
+  // console.log(mediaRegex.test(cleanRoute));
   return (
     <div className="">
       {mediaRegex.test(cleanRoute) ? (
