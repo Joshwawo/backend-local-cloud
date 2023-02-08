@@ -114,3 +114,28 @@ It is not limited to images and videos, you can also view PDFs among many multim
 POST /api/img/amigos--pollos--familly--gus.png
 ```
 
+### Delete Files
+
+```http
+  DELETE /api/delete/path?
+```
+#### Example
+```http
+  DELETE /api/delete/amigos--pollos--familly--gus.png
+```
+### Rename Files
+
+```http
+  PUT /api/rename/path?
+```
+
+| Body | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `name`      | `string` | **Raw Json** |
+
+#### Example
+```http
+PUT /api/rename/amigos--pollos--familly--gus.png
+```
+
+![App ScreenShot](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/5db6fd7c-e88b-4856-a691-ff12a91f99ac/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20230208%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20230208T224813Z&X-Amz-Expires=86400&X-Amz-Signature=5b62ebedac41def20b8515aa0daa9b2287ceacdb4ca7ce2b08c97614f17f42e5&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject)
