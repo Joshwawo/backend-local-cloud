@@ -1,4 +1,4 @@
-import {useState} from "react"
+import {useState, useEffect} from "react"
 import { Link, useParams } from "react-router-dom";
 import useSwr from "swr";
 import axios from "axios";
@@ -22,15 +22,26 @@ import MediFiles from "../components/MediFiles";
 //TODO: Refactor this component
 const Home = () => {
   const [files, setFiles] = useState<FileList | null>(null);
+  // const [dataFolders, setDataFolders] = useState<DirTypes>()
   const { path } = useParams();
-  const {handleModalCarpeta } = useExplorer();
+  const {handleModalCarpeta,dataFolders,fetcher } = useExplorer();
 
   const url3000 = import.meta.env.VITE_BACKEND_URI;
   //Fetcher function
-  const fetcherFolder = (url: string) =>
-    axios.get<DirTypes>(url).then((res) => res.data);
+  const fetcherFolder = async (url: string) =>{
+  
+   const res = await axios.get<DirTypes>(url);
+   console.log("GET FILES", res.data)
+    // setDataFolders(res.data)
+    return res.data;
+  }
+  
+  useEffect(() => {
+    fetcher(`${url3000}/content/${path}`)
+  }, [path])
+
   ///Swr hook
-  const { data:dataFolders, error } = useSwr(`${url3000}/content/${path}`, fetcherFolder);
+  const { data, error,  mutate} = useSwr(`${url3000}/content/${path}`, fetcherFolder);
   //Error handling
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -135,10 +146,10 @@ const Home = () => {
           })}
         </div>
         <div className="mt-10 space-y-2 ">
-          {dataFolders.content.files.length <= 0 ? (
+          {dataFolders.content?.files?.length <= 0 ? (
             <p className="">This folder is empty</p>
           ) : (
-            dataFolders.content.files.map((file, index) => {
+            dataFolders.content?.files.map((file, index) => {
               let cleanRoute = `${dataFolders.path}--${file}`;
               cleanRoute = cleanRoute.replace(/[\\\/]/g, "--")
               return (
@@ -153,10 +164,10 @@ const Home = () => {
           )}
         </div>
         <div className="mt-10 space-y-2 2xl:columns-5 ">
-          {dataFolders.content.files.length <= 0 ? (
+          {dataFolders.content?.files?.length <= 0 ? (
             <p className="">This folder no have media files</p>
           ) : (
-            dataFolders.content.files.map((file, index) => {
+            dataFolders.content?.files?.map((file, index) => {
               let cleanRoute = `${dataFolders.path}--${file}`;
               cleanRoute = cleanRoute.replace(/[\\\/]/g, "--")
               return (

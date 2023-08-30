@@ -4,10 +4,19 @@ import useExplorer from '../context/ExplorerProvider';
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {useLocation} from "react-router-dom"
+import axios from 'axios';
+import { DirTypes } from '../types/DirTypes';
 
 
 const ModalCreateFolder = () => {
-  const { handleModalCarpeta,modalCarpeta,setFolderName,folderName,handleSubmitFolder  } = useExplorer();
+  const { 
+    handleModalCarpeta,
+    modalCarpeta,
+    setFolderName,
+    folderName,
+    handleSubmitFolder,
+    fetcher,
+  } = useExplorer();
 
   const location = useLocation()
   const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
@@ -29,6 +38,10 @@ const ModalCreateFolder = () => {
       return;
     }
     handleSubmitFolder(String(location.pathname),folderName)
+    console.log("Creacion location.pathname",location.pathname)
+    // fetcher(`${import.meta.env.VITE_BACKEND_URI}/content${location.pathname}`)
+    
+    console.log("Fetch location.pathname",location.pathname)
     // setFolderName('')
   };
 

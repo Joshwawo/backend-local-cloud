@@ -1,0 +1,2 @@
+- [x] Actualizar las carpetas de los archivos
+- [ ] Actualizar los archivos de las carpetas

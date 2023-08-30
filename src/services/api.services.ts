@@ -23,6 +23,12 @@ export const contentServ = async (path: string) => {
   return { path: dirPath.relativePath, content, success: true };
 };
 
+/**
+ *  Read the content of a file
+ * @param pathName  path of the file
+ * @param name name of the file
+ * @returns  object with the success message
+ */
 export const dirServ = async (pathName: string, name: string) => {
   const dirPath = processPath(pathName);
   if (!name) {
@@ -32,7 +38,7 @@ export const dirServ = async (pathName: string, name: string) => {
   }
  
   await fs.promises.mkdir(path.join(dirPath.absolutePath, name));
-  return { success: true, message: "Directory created" };
+  return { success: true, message: "Directory created", folderName: name };
 
 }
 
